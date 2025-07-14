@@ -1,0 +1,6 @@
+[
+  {"name": "The Warmth of Silence", "cost":10.60, "unit": "100g", "description":"A candle with the scent of calm and comfort.","img":"https://i.pinimg.com/736x/90/64/f6/9064f603fe8f3d350dea578dc709b72d.jpg"},
+  {"name": "Sea Flowers", "cost":12, "unit": "300g", "smell": "Rose","img":"https://i.pinimg.com/736x/27/19/d8/2719d8b00c26ada2cf8dfe6506396a4c.jpg"},
+  {"name": "White Hearts ", "cost":12, "unit": "300g", "smell": "Lavand","img":"https://i.pinimg.com/736x/29/ef/24/29ef24aab12476cfc3065729c3db2bb0.jpg"},
+  {"name": "Berry Rebellion", "cost":10.60, "unit": "10g", "description":"A candle in a martini glass — like a cocktail at the heart of a summer party.","img":"https://i.pinimg.com/736x/8d/76/2d/8d762d9ea9d9f4f4e43d3779c919dfd5.jpg"}
+]
