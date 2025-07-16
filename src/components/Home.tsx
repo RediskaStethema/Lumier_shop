@@ -3,17 +3,30 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import {useAppSelector} from "../app/hooks.ts";
+import {useAppDispatch, useAppSelector} from "../app/hooks.ts";
 import {useNavigate} from "react-router-dom";
 import Grid from '@mui/joy/Grid';
 import {Paths, type ProductType} from "../utils/types.ts";
+import {auth} from "../configs/firebase_config.ts";
+import {logout} from "../features/authSlice.ts";
+import {useEffect} from "react";
 
 
 
 const Home = () => {
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        if (!auth.currentUser) {
+            dispatch(logout());
+            navigate(Paths.HOME);
+        }
+    }, []);
 
     const {products} = useAppSelector(state => state.currProduct)
-    const navigate = useNavigate();
+
     const { authUser } = useAppSelector((state) => state.auth);
 
     const handleImageClick = (item: ProductType) => {

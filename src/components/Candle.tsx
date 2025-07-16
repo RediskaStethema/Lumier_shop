@@ -1,12 +1,14 @@
 import {useNavigate} from "react-router-dom";
-import {useAppSelector} from "../app/hooks.ts";
+import {useAppDispatch, useAppSelector} from "../app/hooks.ts";
 import {Box, Button, Card, CardActions, CardContent} from "@mui/material";
 import Grid from '@mui/joy/Grid';
 import Typography from "@mui/material/Typography";
 import {addProductUnitToCart, removeProductUnitFromCart} from "../firebase/firebaseCartService.ts";
-import {useState} from "react";
-import type {ProductType} from "../utils/types.ts";
+import {useEffect, useState} from "react";
+import { type ProductType} from "../utils/types.ts";
 import ProductModal from "./service_pages/ProductModal.tsx";
+import {auth} from "../configs/firebase_config.ts";
+import {logout} from "../features/authSlice.ts";
 
 
 
@@ -18,6 +20,15 @@ const Candle = () => {
     const { authUser } = useAppSelector((state) => state.auth);
     const { cartProducts } = useAppSelector((state) => state.cart);
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
+
+
+    useEffect(() => {
+        if (!auth.currentUser) {
+            dispatch(logout());
+        }
+    }, []);
 
     const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(null);
     const [modalOpen, setModalOpen] = useState(false);

@@ -151,7 +151,7 @@ const Layout: React.FC<Props> = ({ items }) => {
                     >
                         <Box
                             component="img"
-                            src="https://i.pinimg.com/736x/20/6d/e7/206de74fdfdb47fa04cba81abb8e676d.jpg"
+                            src="https://i.pinimg.com/736x/26/4e/84/264e8466adc08113dcc272f39bfe5522.jpg"
                             alt="Logo"
                             sx={{
                                 height: { xs: 48, sm: 64 },

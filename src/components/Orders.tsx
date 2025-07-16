@@ -1,14 +1,25 @@
 import {Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography} from "@mui/material";
 import {getUserOrders} from "../firebase/orders_firbase.ts";
 import {useEffect, useState} from "react";
-import type {OrderType} from "../utils/types.ts";
-import {useAppSelector} from "../app/hooks.ts";
+import {type OrderType, Paths} from "../utils/types.ts";
+import {useAppDispatch, useAppSelector} from "../app/hooks.ts";
+import {auth} from "../configs/firebase_config.ts";
+import {logout} from "../features/authSlice.ts";
+import {useNavigate} from "react-router-dom";
 
 
 const Orders = () => {
     const { authUser } = useAppSelector(state => state.auth);
     const [orders, setOrders] = useState<OrderType[]>([]);
     const [loading, setLoading] = useState(true);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!auth.currentUser) {
+            dispatch(logout());
+            navigate(Paths.CANDLE);
+        }
+    }, []);
 
     useEffect(() => {
         if (!authUser) return;

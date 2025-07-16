@@ -15,10 +15,15 @@ import {
 } from "@mui/material";
 import { format } from "date-fns";
 import { AdminProductForm } from "./AddProduct_form.tsx";
+import {auth} from "../../configs/firebase_config.ts";
+import ErrorPage from "./ErrorPage.tsx";
+import {useAppSelector} from "../../app/hooks.ts";
 
 const AdminOrders = () => {
     const [orders, setOrders] = useState<OrderType[]>([]);
     const [loading, setLoading] = useState(true);
+    const authUser=useAppSelector(state => state.auth.authUser)
+
 
     const fetchOrders = async () => {
         try {
@@ -47,8 +52,8 @@ const AdminOrders = () => {
             </Box>
         );
     }
-
-    return (
+    if (auth.currentUser && authUser.includes(import.meta.env.VITE_ROOT_KEY))
+        return (
         <Box
             sx={{
                 padding: 4,
@@ -150,7 +155,7 @@ const AdminOrders = () => {
                 <AdminProductForm />
             </Box>
         </Box>
-    );
+    ); else return <ErrorPage/>;
 };
 
 export default AdminOrders;

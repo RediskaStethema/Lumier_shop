@@ -4,7 +4,7 @@ import {createSlice} from "@reduxjs/toolkit";
 const  authSlice = createSlice({
     name: "auth",
     initialState:{
-        authUser:""
+        authUser:" "
     },reducers:{
         login: (state, action) => {
             state.authUser = action.payload||"";

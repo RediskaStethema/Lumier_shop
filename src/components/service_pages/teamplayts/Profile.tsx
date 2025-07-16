@@ -65,7 +65,7 @@ const Profile = () => {
         }
 
         alert("✅ Profile saved successfully!");
-    };
+    }
 if(auth.currentUser)
     return (
         <Fade in={loaded} timeout={700}>

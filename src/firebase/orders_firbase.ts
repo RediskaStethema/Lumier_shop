@@ -16,7 +16,7 @@ export const switchStatusByOrderId = async (orderId: string, newStatus: statusEn
     }
 };
 
-// Получить все заказы (для админа)
+
 export const getAllOrders = async (): Promise<OrderType[]> => {
     const OrdersCollection = collection(database, "Orders_collection");
     const querySnapshot = await getDocs(OrdersCollection);
@@ -37,7 +37,7 @@ export const getAllOrders = async (): Promise<OrderType[]> => {
     });
 };
 
-// Получить заказы пользователя по email
+
 export const getUserOrders = async (userEmail: string): Promise<OrderType[]> => {
     try {
         const ordersCollection = collection(database, "Orders_collection");
@@ -64,7 +64,7 @@ export const getUserOrders = async (userEmail: string): Promise<OrderType[]> => 
     }
 };
 
-// Создание нового заказа
+
 export const createOrder = async ({
                                       userEmail,
                                       paymentMethod,

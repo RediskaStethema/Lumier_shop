@@ -32,11 +32,11 @@ const navigate = useNavigate();
 const authUser=useAppSelector(state => state.auth.authUser)
     useEffect(() => {
         if(location.pathname === '/error')
-            navigate('/')
+            navigate(Paths.HOME)
     },[])
 
     const predicate = (item: RouteType) => {
-        if (!authChecked) return false; // пока не проверили — ничего не показываем
+        if (!authChecked) return false;
 
         const stored = localStorage.getItem("authUser");
         let role = "USER";
